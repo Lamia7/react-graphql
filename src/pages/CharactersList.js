@@ -1,30 +1,15 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client' // pour faire des requêtes graphQL
 import './CharacterList.css'
+import { useCharacters } from '../hooks/useCharacter';
 
 function CharactersList() {
-
-    // graphQL query
-    const GET_CHARACTERS = gql`
-    query {
-        characters {
-            results {
-                id
-                name
-                image
-            }
-        }
-    }
-    `
 
     // destructuring qui remplace:
     // obj.error();
     // obj.loading();
     // obj.data();
-    const { error, data, loading} = useQuery(GET_CHARACTERS);
+    const { error, data, loading} = useCharacters();
 
-
-    console.log({ error, data, loading})
 
     return (
         <>
